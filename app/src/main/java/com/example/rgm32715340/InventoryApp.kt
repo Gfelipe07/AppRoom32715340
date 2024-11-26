@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.inventory
+package com.example.rgm32715340
 
 import androidx.compose.material.icons.Icons.Filled
 import androidx.compose.material.icons.filled.ArrowBack
@@ -29,8 +29,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.inventory.R.string
-import com.example.inventory.ui.navigation.InventoryNavHost
+import com.example.rgm32715340.R.string
+import com.example.rgm32715340.ui.navigation.InventoryNavHost
 
 /**
  * Top level composable that represents screens for the application.

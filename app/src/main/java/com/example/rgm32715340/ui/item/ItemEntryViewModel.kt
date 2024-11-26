@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.example.inventory.ui.item
+package com.example.rgm32715340.ui.item
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.example.inventory.data.Item
-import com.example.inventory.data.ItemsRepository
+import com.example.rgm32715340.data.Item
+import com.example.rgm32715340.data.ItemsRepository
 import java.text.NumberFormat
 
 /**

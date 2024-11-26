@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.example.inventory.ui.home
+package com.example.rgm32715340.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.inventory.data.Item
-import com.example.inventory.data.ItemsRepository
+import com.example.rgm32715340.data.Item
+import com.example.rgm32715340.data.ItemsRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map

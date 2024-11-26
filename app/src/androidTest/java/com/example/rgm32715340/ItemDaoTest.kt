@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.example.inventory
+package com.example.rgm32715340
 
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.inventory.data.InventoryDatabase
-import com.example.inventory.data.Item
-import com.example.inventory.data.ItemDao
+import com.example.rgm32715340.data.InventoryDatabase
+import com.example.rgm32715340.data.Item
+import com.example.rgm32715340.data.ItemDao
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After

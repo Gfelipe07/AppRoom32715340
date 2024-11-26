@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.inventory.ui.navigation
+package com.example.rgm32715340.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,14 +23,14 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.inventory.ui.home.HomeDestination
-import com.example.inventory.ui.home.HomeScreen
-import com.example.inventory.ui.item.ItemDetailsDestination
-import com.example.inventory.ui.item.ItemDetailsScreen
-import com.example.inventory.ui.item.ItemEditDestination
-import com.example.inventory.ui.item.ItemEditScreen
-import com.example.inventory.ui.item.ItemEntryDestination
-import com.example.inventory.ui.item.ItemEntryScreen
+import com.example.rgm32715340.ui.home.HomeDestination
+import com.example.rgm32715340.ui.home.HomeScreen
+import com.example.rgm32715340.ui.item.ItemDetailsDestination
+import com.example.rgm32715340.ui.item.ItemDetailsScreen
+import com.example.rgm32715340.ui.item.ItemEditDestination
+import com.example.rgm32715340.ui.item.ItemEditScreen
+import com.example.rgm32715340.ui.item.ItemEntryDestination
+import com.example.rgm32715340.ui.item.ItemEntryScreen
 
 /**
  * Provides Navigation graph for the application.

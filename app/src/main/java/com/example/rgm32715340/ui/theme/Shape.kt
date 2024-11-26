@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.inventory.ui.theme
+package com.example.rgm32715340.ui.theme
 
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material3.Shapes

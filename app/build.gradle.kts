@@ -24,7 +24,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.inventory"
+        applicationId = "com.example.rgm32715340"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -63,7 +63,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    namespace = "com.example.inventory"
+    namespace = "com.example.rgm32715340"
 }
 
 dependencies {
@@ -83,6 +83,10 @@ dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
     ksp("androidx.room:room-compiler:${rootProject.extra["room_version"]}")
     implementation("androidx.room:room-ktx:${rootProject.extra["room_version"]}")
+    implementation("androidx.room:room-runtime:${rootProject.extra["room_version"]}")
+    ksp("androidx.room:room-compiler:${rootProject.extra["room_version"]}")
+    implementation("androidx.room:room-ktx:${rootProject.extra["room_version"]}")
+
 
     // Testing
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
