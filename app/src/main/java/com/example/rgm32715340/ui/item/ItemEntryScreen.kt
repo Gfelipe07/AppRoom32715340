@@ -50,6 +50,7 @@ import kotlinx.coroutines.launch
 import java.util.Currency
 import java.util.Locale
 
+// Configuração da rota e título para a tela de entrada de item
 object ItemEntryDestination : NavigationDestination {
     override val route = "item_entry"
     override val titleRes = R.string.item_entry_title
@@ -179,6 +180,7 @@ fun ItemInputForm(
             singleLine = true
         )
         if (enabled) {
+              // Mensagem indicando campos obrigatórios
             Text(
                 text = stringResource(R.string.required_fields),
                 modifier = Modifier.padding(start = dimensionResource(id = R.dimen.padding_medium))
@@ -186,6 +188,7 @@ fun ItemInputForm(
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
