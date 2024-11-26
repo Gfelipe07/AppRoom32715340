@@ -22,29 +22,32 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 /**
- * Database class with a singleton Instance object.
+ * Classe do banco de dados com um objeto Singleton para garantir uma única instância do banco.
  */
-@Database(entities = [Item::class], version = 1, exportSchema = false)
+@Database(entities = [Item::class], version = 1, exportSchema = false) // Define a entidade e a versão do banco
 abstract class InventoryDatabase : RoomDatabase() {
 
+    // Declaração da função abstrata que retorna o DAO
     abstract fun itemDao(): ItemDao
 
     companion object {
         @Volatile
         private var Instance: InventoryDatabase? = null
 
+        /**
+         * Função que retorna a instância única do banco de dados.
+         * Se não existir, ela cria uma nova instância sincronizada.
+         */
         fun getDatabase(context: Context): InventoryDatabase {
-            // if the Instance is not null, return it, otherwise create a new database instance.
-            return Instance ?: synchronized(this) {
-                Room.databaseBuilder(context, InventoryDatabase::class.java, "item_database")
-                    /**
-                     * Setting this option in your app's database builder means that Room
-                     * permanently deletes all data from the tables in your database when it
-                     * attempts to perform a migration with no defined migration path.
-                     */
-                    .fallbackToDestructiveMigration()
-                    .build()
-                    .also { Instance = it }
+            return Instance ?: synchronized(this) { // Bloqueia outras threads para evitar disputas
+                Room.databaseBuilder(
+                    context.applicationContext,           // Contexto do aplicativo
+                    InventoryDatabase::class.java,       // Classe do banco de dados
+                    "item_database"                      // Nome do banco
+                )
+                    .fallbackToDestructiveMigration()   // Define estratégia para migração
+                    .build()                            // Constrói a instância do banco
+                    .also { Instance = it }             // Armazena a instância criada na variável Instance
             }
         }
     }
