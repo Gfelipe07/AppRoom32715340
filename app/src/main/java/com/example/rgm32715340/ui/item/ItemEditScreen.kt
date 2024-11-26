@@ -16,6 +16,7 @@
 
 package com.example.rgm32715340.ui.item
 
+// Importações necessárias para layouts, UI e view models
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.padding
@@ -37,43 +38,45 @@ import com.example.rgm32715340.ui.navigation.NavigationDestination
 import com.example.rgm32715340.ui.theme.InventoryTheme
 import kotlinx.coroutines.launch
 
+// Definição de um objeto para gerenciar a navegação no modo de edição do item
 object ItemEditDestination : NavigationDestination {
-    override val route = "item_edit"
-    override val titleRes = R.string.edit_item_title
-    const val itemIdArg = "itemId"
-    val routeWithArgs = "$route/{$itemIdArg}"
+    override val route = "item_edit" // Rota para edição
+    override val titleRes = R.string.edit_item_title // Título da tela
+    const val itemIdArg = "itemId" // Argumento necessário na rota
+    val routeWithArgs = "$route/{$itemIdArg}" // Formato da rota com argumentos
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ItemEditScreen(
-    navigateBack: () -> Unit,
-    onNavigateUp: () -> Unit,
-    modifier: Modifier = Modifier,
-    viewModel: ItemEditViewModel = viewModel(factory = AppViewModelProvider.Factory)
+    navigateBack: () -> Unit, // Função chamada ao voltar
+    onNavigateUp: () -> Unit, // Função para navegação para cima
+    modifier: Modifier = Modifier, // Modificadores de layout
+    viewModel: ItemEditViewModel = viewModel(factory = AppViewModelProvider.Factory) // ViewModel injetado
 ) {
-    val coroutineScope = rememberCoroutineScope()
+    val coroutineScope = rememberCoroutineScope() // Gerenciamento de corrotinas
+
+    // Scaffold cria a estrutura básica da tela, incluindo app bar e corpo
     Scaffold(
         topBar = {
+            // Barra superior com título e botão de navegação
             InventoryTopAppBar(
                 title = stringResource(ItemEditDestination.titleRes),
                 canNavigateBack = true,
                 navigateUp = onNavigateUp
             )
         },
-        modifier = modifier
+        modifier = modifier // Aplicação de modificadores externos
     ) { innerPadding ->
+        // Corpo principal da tela
         ItemEntryBody(
-            itemUiState = viewModel.itemUiState,
-            onItemValueChange = viewModel::updateUiState,
+            itemUiState = viewModel.itemUiState, // Estado do UI gerenciado pelo ViewModel
+            onItemValueChange = viewModel::updateUiState, // Callback para atualizar o estado do item
             onSaveClick = {
-                // Note: If the user rotates the screen very fast, the operation may get cancelled
-                // and the item may not be updated in the Database. This is because when config
-                // change occurs, the Activity will be recreated and the rememberCoroutineScope will
-                // be cancelled - since the scope is bound to composition.
+                // Salva as alterações no banco de dados dentro de uma corrotina
                 coroutineScope.launch {
-                    viewModel.updateItem()
-                    navigateBack()
+                    viewModel.updateItem() // Chama a função para atualizar o item
+                    navigateBack() // Retorna para a tela anterior
                 }
             },
             modifier = Modifier
@@ -82,15 +85,17 @@ fun ItemEditScreen(
                     top = innerPadding.calculateTopPadding(),
                     end = innerPadding.calculateEndPadding(LocalLayoutDirection.current),
                 )
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(rememberScrollState()) // Permite rolagem vertical
         )
     }
 }
 
+// Função para pré-visualizar a tela no Android Studio
 @Preview(showBackground = true)
 @Composable
 fun ItemEditScreenPreview() {
     InventoryTheme {
+        // Chamada da tela de edição com ações simuladas
         ItemEditScreen(navigateBack = { /*Do nothing*/ }, onNavigateUp = { /*Do nothing*/ })
     }
 }
