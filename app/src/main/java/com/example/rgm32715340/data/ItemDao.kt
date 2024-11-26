@@ -30,20 +30,23 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ItemDao {
 
+    // Retorna todos os itens ordenados pelo nome em ordem crescente
     @Query("SELECT * from items ORDER BY name ASC")
     fun getAllItems(): Flow<List<Item>>
 
+    // Seleciona um único item da tabela pelo ID
     @Query("SELECT * from items WHERE id = :id")
     fun getItem(id: Int): Flow<Item>
 
-    // Specify the conflict strategy as IGNORE, when the user tries to add an
-    // existing Item into the database Room ignores the conflict.
+    // Insere um item no banco de dados, ignorando conflitos
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(item: Item)
 
+    // Atualiza os dados de um item existente
     @Update
     suspend fun update(item: Item)
 
+    // Remove um item do banco de dados
     @Delete
     suspend fun delete(item: Item)
 }
