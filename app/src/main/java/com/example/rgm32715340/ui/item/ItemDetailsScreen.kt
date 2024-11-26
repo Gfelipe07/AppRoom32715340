@@ -66,6 +66,7 @@ import com.example.rgm32715340.ui.navigation.NavigationDestination
 import com.example.rgm32715340.ui.theme.InventoryTheme
 import kotlinx.coroutines.launch
 
+// Objeto que define o destino da tela de detalhes do item no sistema de navegação
 object ItemDetailsDestination : NavigationDestination {
     override val route = "item_details"
     override val titleRes = R.string.item_detail_title
@@ -228,6 +229,7 @@ fun ItemDetails(
     }
 }
 
+// Linha com rótulo e detalhe
 @Composable
 private fun ItemDetailsRow(
     @StringRes labelResID: Int, itemDetail: String, modifier: Modifier = Modifier
@@ -239,11 +241,13 @@ private fun ItemDetailsRow(
     }
 }
 
+// Diálogo de confirmação para exclusão
 @Composable
 private fun DeleteConfirmationDialog(
     onDeleteConfirm: () -> Unit, onDeleteCancel: () -> Unit, modifier: Modifier = Modifier
 ) {
-    AlertDialog(onDismissRequest = { /* Do nothing */ },
+    AlertDialog(
+        onDismissRequest = { /* Diálogo bloqueado */ },
         title = { Text(stringResource(R.string.attention)) },
         text = { Text(stringResource(R.string.delete_question)) },
         modifier = modifier,
@@ -256,15 +260,30 @@ private fun DeleteConfirmationDialog(
             TextButton(onClick = onDeleteConfirm) {
                 Text(text = stringResource(R.string.yes))
             }
-        })
+        }
+    )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun ItemDetailsScreenPreview() {
     InventoryTheme {
-        ItemDetailsBody(ItemDetailsUiState(
-            outOfStock = true, itemDetails = ItemDetails(1, "Pen", "$100", "10")
-        ), onSellItem = {}, onDelete = {})
+        ItemDetailsBody(
+            ItemDetailsUiState(
+                outOfStock = true, itemDetails = ItemDetails(1, "Pen", "$100", "10")
+            ),
+            onSellItem = {},
+            onDelete = {}
+        )
     }
 }
+
+
+
+
+
+
+
+
+
+
