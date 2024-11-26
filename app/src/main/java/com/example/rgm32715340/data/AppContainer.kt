@@ -19,19 +19,13 @@ package com.example.rgm32715340.data
 import android.content.Context
 
 /**
- * App container for Dependency injection.
+ * App container to hold repository instances.
  */
 interface AppContainer {
     val itemsRepository: ItemsRepository
 }
 
-/**
- * [AppContainer] implementation that provides instance of [OfflineItemsRepository]
- */
 class AppDataContainer(private val context: Context) : AppContainer {
-    /**
-     * Implementation for [ItemsRepository]
-     */
     override val itemsRepository: ItemsRepository by lazy {
         OfflineItemsRepository(InventoryDatabase.getDatabase(context).itemDao())
     }
